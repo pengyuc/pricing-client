@@ -10,10 +10,11 @@ import org.springframework.test.context.junit4.SpringRunner;
 import javax.inject.Inject;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
-@AutoConfigureStubRunner(ids="io.pengyuc:price-service:+:stubs:8080", workOffline = true)
+@SpringBootTest (webEnvironment = SpringBootTest.WebEnvironment.NONE, properties = {
+		"stubrunner.idsToServiceIds.price-service=PriceService"
+})
+@AutoConfigureStubRunner(ids="io.pengyuc:price-service", workOffline = true)
 public class PricingClientApplicationTests {
-
     @Inject
     PricingClient client;
 	@Test
